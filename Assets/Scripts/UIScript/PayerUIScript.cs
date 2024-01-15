@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class PayerUIScript : MonoBehaviour
 {
-    [SerializeField]private Text _scoreText,_overScoretext,_highScore,_highScorePlay;
+    [SerializeField]private TMP_Text _scoreText,_overScoretext,_highScore,_highScorePlay;
     [SerializeField]private GameObject _gameOver;
     private BirdScript _birdScript
     ;

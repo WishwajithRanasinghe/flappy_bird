@@ -10,10 +10,19 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 0;
-        _pauseMenu.SetActive(false);
+        if(_pauseMenu != null)
+        {
+            _pauseMenu.SetActive(false);
+            
+            _playerInt.SetActive(true);
+            _gameOverMenu.SetActive(false);
+        }
+        if(_scoretext!= null)
         _scoretext.SetActive(false);
-        _playerInt.SetActive(true);
-        _gameOverMenu.SetActive(false);
+       // _pauseMenu.SetActive(false);
+       // _scoretext.SetActive(false);
+       
+        
 
     }//Start
     public void Play()
@@ -54,7 +63,7 @@ public class UIManager : MonoBehaviour
             _pauseMenu.SetActive(true);
             Time.timeScale = 0;
         }
-        if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        if((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && SceneManager.GetActiveScene().buildIndex != 0)
         {
             Time.timeScale = 1;
             _scoretext.SetActive(true);
