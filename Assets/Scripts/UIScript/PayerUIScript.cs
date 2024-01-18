@@ -22,7 +22,7 @@ public class PayerUIScript : MonoBehaviour
     {
         _uiScore = _birdScript.Score();
         _scoreText.text = "Score = " + _uiScore.ToString();
-        _overScoretext.text = "You'r Score = " + _uiScore.ToString(); 
+        _overScoretext.text = "Your Score = " + _uiScore.ToString(); 
         _highScore.text = $"HighScore :  {PlayerPrefs.GetInt("HighScore",0)}";
         _highScorePlay.text = $"HighScore :  {PlayerPrefs.GetInt("HighScore",0)}";
         if(_birdScript.Dying() == true)

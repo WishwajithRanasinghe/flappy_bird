@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]private GameObject _pauseMenu,_gameOverMenu;
     [SerializeField]private GameObject _scoretext,_playerInt;
+    [SerializeField]private TMP_Text _currentScore;
     private void Start()
     {
         Time.timeScale = 0;
@@ -25,6 +27,7 @@ public class UIManager : MonoBehaviour
         
 
     }//Start
+
     public void Play()
     {
         SceneManager.LoadScene(1);
@@ -55,6 +58,10 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         _pauseMenu.SetActive(false);
     }//Resume
+    public void ResetScore()
+    {
+        PlayerPrefs.SetInt("HighScore", 0);
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -68,6 +75,10 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1;
             _scoretext.SetActive(true);
             _playerInt.SetActive(false);
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            _currentScore.text =$"HighScore :  {PlayerPrefs.GetInt("HighScore")}";
         }
 
     }//Update
